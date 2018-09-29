@@ -1,0 +1,22 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch('RAILS_MAX_THREADS') { 5 } %>
+  database: <%= ENV['job-board-custom'] %>
+  username: <%= ENV['admin'] %>
+  password: <%= ENV['password'] %>
+
+development:
+  <<: *default
+  database: job-board-custom_development
+  template: template0
+
+test:
+  <<: *default
+  database: job-board-custom_test
+  template: template0
+
+production:
+  <<: *default
+  template: template0
