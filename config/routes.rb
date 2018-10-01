@@ -1,9 +1,13 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+
+  resources :locations
+  resources :regions
   # RESTful routes
   resources :examples, except: %i[new edit]
   resources :users, only: %i[index show update]
+  resources :postings, except: %i[new edit]
 
   # Custom routes
   post '/sign-up' => 'users#signup'
